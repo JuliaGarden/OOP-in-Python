@@ -1,4 +1,3 @@
-# models/subscription.py
 from datetime import datetime
 
 class Subscription:

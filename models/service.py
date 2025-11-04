@@ -8,7 +8,6 @@ class StreamingService:
         self.users: List[User] = []
         self.contents: List[Content] = []
 
-    # --- Пользователи ---
     def add_user(self, user: User) -> None:
         if any(u.user_id == user.user_id for u in self.users):
             raise UserAlreadyExistsError(f"User with ID {user.user_id} already exists")
@@ -34,15 +33,13 @@ class StreamingService:
                 return content
         raise ContentNotFoundError(f"Content with ID {content_id} not found")
 
-    #  Просмотр с проверкой подписки
     def watch_content(self, user_id: int, content_id: int) -> str:
         user = self.get_user(user_id)
 
-        # Проверка подписки — только для Customer
+        #проверка подписки Customer
         if hasattr(user, 'is_subscription_active'):
             if not user.is_subscription_active():
                 raise SubscriptionExpiredError("Ваша подписка истекла. Обновите её для просмотра.")
-        # Для обычного User (не Customer) можно разрешить бесплатный просмотр или запретить
 
         content = self.get_content(content_id)
         return f"Просмотр: {content.title}"
