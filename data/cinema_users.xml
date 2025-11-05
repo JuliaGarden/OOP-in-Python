@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+    <users>
+        <user user_id = "1" username = "Daria" email = "klimza22@g.c" is_active = "true" role = "customer">
+            <phone> +22 </phone>
+            <subscription sub_id = "1" plan_name = "Premium" start_date = "2025-01-01" end_date = "2025-12-31"/>
+        </user>
+        <user>
+            <user user_id="2" username="adm" email="cinema01@g.c" is_active="true" role="admin"> </user>
+        </user>
+    </users>
+</data>

@@ -1,0 +1,31 @@
+{
+  "content" : [
+    {
+      "content_id": 1,
+      "title": "The man who fell to earth",
+      "description": "An alien must pose as a human to save his dying planet",
+      "release_year": 1976,
+      "duration": 148,
+      "type": "movie",
+      "is_premiere": false
+    },
+    {
+      "content_id": 2,
+      "title": "The long walk",
+      "description": "Fifty boys in an annually televised competitive walking marathon",
+      "release_year": 2025,
+      "duration": 108,
+      "type": "movie",
+      "is_premiere": true
+    },
+    {
+      "content_id": 3,
+      "title": "Stranger Things",
+      "description": "1980, nerds investigate disappearance of their friend",
+      "release_year": 2016,
+      "duration": 30,
+      "type": "series",
+      "seasons": 5
+    }
+  ]
+}

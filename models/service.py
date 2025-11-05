@@ -33,13 +33,21 @@ class StreamingService:
                 return content
         raise ContentNotFoundError(f"Content with ID {content_id} not found")
 
-    def watch_content(self, user_id: int, content_id: int) -> str:
+    def update_user(self, user_id: int, **kwargs) -> bool:
         user = self.get_user(user_id)
+        user.update_profile(**kwargs)
+        return True
 
-        #проверка подписки Customer
-        if hasattr(user, 'is_subscription_active'):
-            if not user.is_subscription_active():
-                raise SubscriptionExpiredError("Ваша подписка истекла. Обновите её для просмотра.")
-
+    def delete_content(self, content_id: int) -> bool:
         content = self.get_content(content_id)
+        self.contents.remove(content)
+        return True
+
+    def watch_content(self, user_id: int, content_id: int) -> str:
+        # Сначала проверяем существование контента
+        content = self.get_content(content_id)  # ← может выбросить ContentNotFoundError
+        # Потом проверяем подписку
+        user = self.get_user(user_id)
+        if hasattr(user, 'is_subscription_active') and not user.is_subscription_active():
+            raise SubscriptionExpiredError("Ваша подписка истекла...")
         return f"Просмотр: {content.title}"

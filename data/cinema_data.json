@@ -1,0 +1,29 @@
+{
+  "users": [
+    {
+      "user_id": 1,
+      "username": "George",
+      "email": "Harrison@g.c",
+      "is_active": true,
+      "role": "customer",
+      "phone": "+123456789",
+      "subscription": {
+        "sub_id": 1,
+        "plan_name": "Premium",
+        "start_date": "2025-01-01",
+        "end_date": "2025-12-31"
+      }
+    }
+  ],
+  "content": [
+    {
+      "content_id": 1,
+      "title": "Inception",
+      "description": "A thief who steals corporate secrets...",
+      "release_year": 2010,
+      "duration": 148,
+      "type": "movie",
+      "is_premiere": false
+    }
+  ]
+}
