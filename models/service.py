@@ -24,6 +24,11 @@ class StreamingService:
         self.users.remove(user)
         return True
 
+    def update_user(self, user_id: int, **kwargs) -> bool:
+        user = self.get_user(user_id)
+        user.update_profile(**kwargs)
+        return True
+
     def add_content(self, content: Content) -> None:
         self.contents.append(content)
 
@@ -33,11 +38,6 @@ class StreamingService:
                 return content
         raise ContentNotFoundError(f"Content with ID {content_id} not found")
 
-    def update_user(self, user_id: int, **kwargs) -> bool:
-        user = self.get_user(user_id)
-        user.update_profile(**kwargs)
-        return True
-
     def delete_content(self, content_id: int) -> bool:
         content = self.get_content(content_id)
         self.contents.remove(content)
@@ -45,7 +45,7 @@ class StreamingService:
 
     def watch_content(self, user_id: int, content_id: int) -> str:
         # Сначала проверяем существование контента
-        content = self.get_content(content_id)  # ← может выбросить ContentNotFoundError
+        content = self.get_content(content_id)  #может выбросить ContentNotFoundError
         # Потом проверяем подписку
         user = self.get_user(user_id)
         if hasattr(user, 'is_subscription_active') and not user.is_subscription_active():

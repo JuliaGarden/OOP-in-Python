@@ -1,14 +1,14 @@
 {
   "users": [
     {
-      "user_id": 1,
+      "user_id": 47,
       "username": "George",
       "email": "Harrison@g.c",
       "is_active": true,
       "role": "customer",
       "phone": "+123456789",
       "subscription": {
-        "sub_id": 1,
+        "sub_id": 47,
         "plan_name": "Premium",
         "start_date": "2025-01-01",
         "end_date": "2025-12-31"
@@ -18,12 +18,21 @@
   "content": [
     {
       "content_id": 1,
-      "title": "Inception",
-      "description": "A thief who steals corporate secrets...",
-      "release_year": 2010,
+      "title": "The man who fell to earth",
+      "description": "An alien must pose as a human to save his dying planet",
+      "release_year": 1976,
       "duration": 148,
       "type": "movie",
       "is_premiere": false
+    },
+    {
+      "content_id": 2,
+      "title": "The long walk",
+      "description": "Fifty boys in an annually televised competitive walking marathon",
+      "release_year": 2025,
+      "duration": 108,
+      "type": "movie",
+      "is_premiere": true
     }
   ]
 }

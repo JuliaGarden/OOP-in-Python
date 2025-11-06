@@ -87,23 +87,25 @@ def load_from_xml(filename: str) -> Dict[str, Any]:
                     }
             data["users"].append(user_dict)
 
-        for item in root.find("content"):
-            item_dict = {
-                "content_id": int(item.get("content_id")),
-                "title": item.get("title"),
-                "release_year": int(item.get("release_year")),
-                "duration": int(item.get("duration")),
-                "description": item.find("description").text or ""
-            }
-            if item.tag == "movie":
-                item_dict["type"] = "movie"
-                item_dict["is_premiere"] = item.get("is_premiere") == "true"
-            else:
-                item_dict["type"] = "series"
-                item_dict["seasons"] = int(item.get("seasons"))
-            data["content"].append(item_dict)
-
+        content_elem = root.find("content")
+        if content_elem is not None:
+            for item in content_elem:
+                item_dict = {
+                    "content_id": int(item.get("content_id")),
+                    "title": item.get("title"),
+                    "release_year": int(item.get("release_year")),
+                    "duration": int(item.get("duration")),
+                    "description": item.find("description").text or ""
+                }
+                if item.tag == "movie":
+                    item_dict["type"] = "movie"
+                    item_dict["is_premiere"] = item.get("is_premiere") == "true"
+                else:
+                    item_dict["type"] = "series"
+                    item_dict["seasons"] = int(item.get("seasons"))
+                data["content"].append(item_dict)
         return data
+
     except FileNotFoundError:
         print(f"Файл {filename} не найден.")
         return {"users": [], "content": []}
